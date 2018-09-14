@@ -1,0 +1,33 @@
+default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+        - group.lights
+        - group.tv
+        - group.switches
+
+media:
+    view: yes
+    icon: mdi:play
+    entities:
+        - media_player.spotify
+        - media_player.office
+        - media_player.living_room
+        - media_player.bedroom
+        - media_player.chromecast5898
+
+lights:
+    entities:
+        - light.kitchen_light
+        - light.office_light
+        - light.bed_light
+        - light.living_room_light
+        - light.falcon
+        - light.gateway_light_7811dcb2249f
+        
+cinema:
+    entities:
+        - switch.receiver
+        - switch.tv
+        - switch.xbox
+    

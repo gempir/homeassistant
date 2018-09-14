@@ -1,0 +1,61 @@
+homeassistant:
+    name: Home
+    latitude: !secret home_lat
+    longitude: !secret home_long
+    elevation: !secret home_elev
+    unit_system: metric
+    time_zone: !secret home_time
+    customize: !include customize.yaml
+
+frontend:
+    themes: !include themes.yaml
+
+# Enables configuration UI
+config:
+
+cloud:
+    google_actions:
+        filter:
+            include_domains:
+                - switch
+                - light
+                - script
+            
+websocket_api:
+
+http:
+    # Secrets are defined in the file secrets.yaml
+    api_password: !secret http_password
+    # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+    base_url: !secret base_url
+
+
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Text to speech
+tts:
+    - platform: google
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+light: !include light.yaml
+switch: !include switch.yaml
+media_player: !include media_player.yaml
+
+xiaomi_aqara:
+    discovery_retry: 10
+    gateways:
+        - key: !secret gateway_key
+
+panel_iframe:
+    configurator:
+        title: Configurator
+        icon: mdi:wrench
+        url: !secret configurator
+
+mqtt:  
+    password: !secret mqtt_password

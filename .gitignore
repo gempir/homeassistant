@@ -1,0 +1,16 @@
+*.conf
+secrets.yaml
+known_devices.yaml
+home-assistant_v2.db
+tts
+www
+.HA_VERSION
+.shopping_list.json
+.uuid
+home-assistant.log
+.cloud
+entity_registry.yaml
+.spotify-token-cache
+.config-entries.json
+.storage/
+configurator.py

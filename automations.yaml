@@ -1,0 +1,75 @@
+- alias: "Bedroom Right Light Switch"     
+  trigger:
+      - platform: event
+        event_type: click
+        event_data:
+            entity_id: binary_sensor.wall_switch_left_158d0001f3f4cc
+            click_type: single
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.office_light
+            
+- alias: "Bedroom Left Light Switch"     
+  trigger:
+      - platform: event
+        event_type: click
+        event_data:
+            entity_id: binary_sensor.wall_switch_right_158d0001f3f4cc
+            click_type: single
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.bed_light
+            
+            
+- alias: "Kitchen Light on Motion"
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0001e514ac
+        to: 'on'
+  action:
+      - service: light.turn_on
+        entity_id: light.kitchen_light
+        
+- alias: "Kitchen Light off after 1 Minute"
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0001e514ac
+        to: 'off'
+        for:
+            minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen_light
+            
+            
+- alias: "Entry Light on Motion"
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d000222e4ae
+        to: 'on'
+  action:
+      - service: light.turn_on
+        entity_id: light.gateway_light_7811dcb2249f
+        
+- alias: "Entry Light off after 1 Minute"
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d000222e4ae
+        to: 'off'
+        for:
+            minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.gateway_light_7811dcb2249f
+  
+- id: letsencrypt-renewal
+  alias: "Let's Encrypt Renewal"
+  trigger:
+      - platform: time
+        at: '00:00:00'
+  action:
+      - service: hassio.addon_restart
+        data:
+          addon: core_letsencrypt

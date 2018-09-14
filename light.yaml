@@ -1,0 +1,18 @@
+- platform: mqtt_json
+  name: Falcon
+  state_topic: "home/falcon"
+  command_topic: "home/falcon/set"
+  brightness: true
+  rgb: true
+  optimistic: false
+  qos: 0
+- platform: yeelight
+  devices:
+      192.168.178.28:
+          name: Office Light
+      192.168.178.31:
+          name: Bed Light
+      192.168.178.24:
+          name: Kitchen Light
+      192.168.178.32:
+          name: Living Room Light
