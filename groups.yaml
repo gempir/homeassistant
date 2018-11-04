@@ -3,8 +3,7 @@ default_view:
     icon: mdi:home
     entities:
         - group.lights
-        - group.tv
-        - group.switches
+        - group.cinema
 
 media:
     view: yes
@@ -22,7 +21,7 @@ lights:
         - light.office_light
         - light.bed_light
         - light.living_room_light
-        - light.falcon
+        - light.falcon_light
         - light.gateway_light_7811dcb2249f
         
 cinema:

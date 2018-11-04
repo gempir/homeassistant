@@ -13,13 +13,13 @@ frontend:
 # Enables configuration UI
 config:
 
-cloud:
-    google_actions:
-        filter:
-            include_domains:
-                - switch
-                - light
-                - script
+google_assistant:
+  project_id: ga_project_id
+  api_key: ga_api_key
+  exposed_domains:
+    - switch
+    - light
+    - script
             
 websocket_api:
 

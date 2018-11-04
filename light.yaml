@@ -1,5 +1,5 @@
 - platform: mqtt_json
-  name: Falcon
+  name: Falcon Light
   state_topic: "home/falcon"
   command_topic: "home/falcon/set"
   brightness: true
@@ -15,4 +15,6 @@
       192.168.178.24:
           name: Kitchen Light
       192.168.178.32:
-          name: Living Room Light
+          name: Couch Light
+      192.168.178.42:
+          name: Bathroom Light
