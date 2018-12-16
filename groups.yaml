@@ -27,6 +27,6 @@ lights:
 cinema:
     entities:
         - switch.receiver
-        - switch.tv
+        - switch.zeus
         - switch.xbox
     

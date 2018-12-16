@@ -21,7 +21,31 @@
       - service: light.toggle
         data:
             entity_id: light.bed_light
+
+
+- alias: "Office Right Light Switch"     
+  trigger:
+      - platform: event
+        event_type: click
+        event_data:
+            entity_id: binary_sensor.wall_switch_left_158d0001e11856
+            click_type: single
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.living_room_light
             
+- alias: "Office Left Light Switch"     
+  trigger:
+      - platform: event
+        event_type: click
+        event_data:
+            entity_id: binary_sensor.wall_switch_right_158d0001e11856
+            click_type: single
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.office_light
             
 - alias: "Kitchen Light on Motion"
   trigger:

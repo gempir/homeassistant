@@ -1,4 +1,4 @@
-switch.tv:
+switch.zeus:
     icon: "mdi:television"
 switch.receiver:
     icon: "mdi:dolby"
@@ -15,13 +15,3 @@ group.all_lights:
     hidden: false
 group.all_switches:
     hidden: false
-    
-    
-binary_sensor.wall_switch_left_158d0001f3f4cc:    
-    friendly_name: Living Room Switch Left
-    
-binary_sensor.wall_switch_right_158d0001f3f4cc:    
-    friendly_name: Living Room Switch Right
-
-binary_sensor.wall_switch_both_158d0001f3f4cc:
-    friendly_name: Living Room Switch Both
