@@ -38,6 +38,9 @@ discovery:
 # Text to speech
 tts:
     - platform: google
+    
+lovelace:
+    mode: yaml
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -59,3 +62,4 @@ panel_iframe:
 
 mqtt:  
     password: !secret mqtt_password
+
