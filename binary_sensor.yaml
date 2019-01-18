@@ -1,0 +1,16 @@
+- platform: "mqtt"
+  state_topic: "zigbee2mqtt/0x00158d000222e4ae"
+  name: entryway_motion
+  availability_topic: "zigbee2mqtt/bridge/state"
+  payload_on: true
+  payload_off: false
+  value_template: "{{ value_json.occupancy }}"
+  device_class: "motion"
+- platform: "mqtt"
+  state_topic: "zigbee2mqtt/0x00158d0001e514ac"
+  name: kitchen_motion
+  availability_topic: "zigbee2mqtt/bridge/state"
+  payload_on: true
+  payload_off: false
+  value_template: "{{ value_json.occupancy }}"
+  device_class: "motion"
