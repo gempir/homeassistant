@@ -49,11 +49,6 @@ sensor: !include sensor.yaml
 light: !include light.yaml
 switch: !include switch.yaml
 
-xiaomi_aqara:
-    discovery_retry: 10
-    gateways:
-        - key: !secret gateway_key
-
 panel_iframe:
     configurator:
         title: Configurator

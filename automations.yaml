@@ -1,55 +1,52 @@
-- alias: "Bedroom Right Light Switch"     
-  trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-            entity_id: binary_sensor.wall_switch_left_158d0001f3f4cc
-            click_type: single
-  action:
-      - service: light.toggle
-        data:
-            entity_id: light.office_light
+# - alias: "Bedroom Right Light Switch"     
+#   trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#             entity_id: binary_sensor.wall_switch_left_158d0001f3f4cc
+#             click_type: single
+#   action:
+#       - service: light.toggle
+#         data:
+#             entity_id: light.office_light
             
-- alias: "Bedroom Left Light Switch"     
-  trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-            entity_id: binary_sensor.wall_switch_right_158d0001f3f4cc
-            click_type: single
-  action:
-      - service: light.toggle
-        data:
-            entity_id: light.bed_light
+# - alias: "Bedroom Left Light Switch"     
+#   trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#             entity_id: binary_sensor.wall_switch_right_158d0001f3f4cc
+#             click_type: single
+#   action:
+#       - service: light.toggle
+#         data:
+#             entity_id: light.bed_light
 
-- alias: "Office Right Light Switch"     
-  trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-            entity_id: binary_sensor.wall_switch_left_158d0001e11856
-            click_type: single
-  action:
-      - service: light.toggle
-        data:
-            entity_id: light.living_room_light
+# - alias: "Office Right Light Switch"     
+#   trigger:
+#       platform: state
+#       entity_id: sensor.office_switch
+#       to: 'left'
+#   action:
+#       - service: light.toggle
+#         data:
+#             entity_id: light.living_room_light
             
-- alias: "Office Left Light Switch"     
-  trigger:
-      - platform: event
-        event_type: xiaomi_aqara.click
-        event_data:
-            entity_id: binary_sensor.wall_switch_right_158d0001e11856
-            click_type: single
-  action:
-      - service: light.toggle
-        data:
-            entity_id: light.desk_light
+# - alias: "Office Left Light Switch"     
+#   trigger:
+#       - platform: event
+#         event_type: xiaomi_aqara.click
+#         event_data:
+#             entity_id: sensor.office_switch=left
+#   action:
+#       - service: light.toggle
+#         data:
+#             entity_id: light.office_light
             
 - alias: "Kitchen Light on Motion"
   trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0001e514ac
+        entity_id: binary_sensor.kitchen_motion
         to: 'on'
   action:
       - service: light.turn_on
@@ -58,7 +55,7 @@
 - alias: "Kitchen Light off after 1 Minute"
   trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0001e514ac
+        entity_id: binary_sensor.kitchen_motion
         to: 'off'
         for:
             minutes: 1
@@ -70,22 +67,22 @@
 - alias: "Entry Light on Motion"
   trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d000222e4ae
+        entity_id: binary_sensor.entryway_motion
         to: 'on'
   action:
       - service: light.turn_on
-        entity_id: light.gateway_light_7811dcb2249f
+        entity_id: light.entryway_light
         
 - alias: "Entry Light off after 1 Minute"
   trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d000222e4ae
+        entity_id: binary_sensor.entryway_motion
         to: 'off'
         for:
             minutes: 1
   action:
     service: light.turn_off
-    entity_id: light.gateway_light_7811dcb2249f
+    entity_id: light.entryway_light
   
 - id: letsencrypt-renewal
   alias: "Let's Encrypt Renewal"
@@ -109,7 +106,7 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.office_light
+    entity_id: light.desk_light
 - alias: Office Dimmer on
   trigger:
     platform: state
@@ -119,7 +116,99 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.office_light
+    entity_id: light.desk_light
+    data_template:
+      brightness: "{{ trigger.to_state.state|int }}"
+## Entryway
+- alias: Entryway Dimmer off
+  trigger:
+    platform: state
+    entity_id: sensor.entryway_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int == 0 }}"
+  action:
+    service: light.turn_off
+    entity_id: light.entryway_light
+- alias: Entryway Dimmer on
+  trigger:
+    platform: state
+    entity_id: sensor.entryway_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int != 0 }}"
+  action:
+    service: light.turn_on
+    entity_id: light.entryway_light
+    data_template:
+      brightness: "{{ trigger.to_state.state|int }}"
+## Storage
+- alias: Storage Dimmer off
+  trigger:
+    platform: state
+    entity_id: sensor.storage_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int == 0 }}"
+  action:
+    service: light.turn_off
+    entity_id: light.storage_light
+- alias: Storage Dimmer on
+  trigger:
+    platform: state
+    entity_id: sensor.storage_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int != 0 }}"
+  action:
+    service: light.turn_on
+    entity_id: light.storage_light
+    data_template:
+      brightness: "{{ trigger.to_state.state|int }}"
+## Toilet
+- alias: Toilet Dimmer off
+  trigger:
+    platform: state
+    entity_id: sensor.toilet_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int == 0 }}"
+  action:
+    service: light.turn_off
+    entity_id: light.toilet_light
+- alias: Toilet Dimmer on
+  trigger:
+    platform: state
+    entity_id: sensor.toilet_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int != 0 }}"
+  action:
+    service: light.turn_on
+    entity_id: light.toilet_light
+    data_template:
+      brightness: "{{ trigger.to_state.state|int }}"
+## Bedroom
+- alias: Bedroom Dimmer off
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int == 0 }}"
+  action:
+    service: light.turn_off
+    entity_id: light.bedroom_light
+- alias: Bedroom Dimmer on
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int != 0 }}"
+  action:
+    service: light.turn_on
+    entity_id: light.bedroom_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
       
