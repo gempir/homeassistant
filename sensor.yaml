@@ -1,0 +1,9 @@
+- platform: "mqtt"
+  state_topic: "zigbee2mqtt/0x000b57fffe11bce6"
+  name: office_dimmer
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: "brightness"
+  icon: "mdi:brightness-5"
+  value_template: "{{ value_json.brightness }}"
+  json_attributes: 
+  - "linkquality"

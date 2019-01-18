@@ -21,8 +21,6 @@ google_assistant:
     - light
     - script
             
-websocket_api:
-
 http:
     # Secrets are defined in the file secrets.yaml
     api_password: !secret http_password
@@ -34,20 +32,22 @@ updater:
 
 # Discover some devices automatically
 discovery:
+    ignore:
+    - plex_mediaserver
+    - yeelight
 
 # Text to speech
 tts:
     - platform: google
     
 lovelace:
-    mode: yaml
 
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+sensor: !include sensor.yaml
 light: !include light.yaml
 switch: !include switch.yaml
-media_player: !include media_player.yaml
 
 xiaomi_aqara:
     discovery_retry: 10
