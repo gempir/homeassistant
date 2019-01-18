@@ -10,7 +10,7 @@
 - platform: yeelight
   devices:
       192.168.178.28:
-          name: Office Light
+          name: Desk Light
       192.168.178.31:
           name: Bed Light
       192.168.178.24:
@@ -21,3 +21,39 @@
           name: Bathroom Light
       192.168.178.44:
           name: Kitchen Light
+- platform: "mqtt"
+  name: Office Light
+  state_topic: "zigbee2mqtt/0x000b57fffe0ee020"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/0x000b57fffe0ee020/set"
+- platform: "mqtt"
+  name: Storage Light
+  state_topic: "zigbee2mqtt/0x000b57fffe260d2b"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/0x000b57fffe260d2b/set"
+- platform: "mqtt"
+  name: Toilet Light
+  state_topic: "zigbee2mqtt/0x000b57fffe2de8b4"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/0x000b57fffe2de8b4/set"
+- platform: "mqtt"
+  name: Bedroom Light
+  state_topic: "zigbee2mqtt/0x000b57fffe161262"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/0x000b57fffe161262/set"
+- platform: "mqtt"
+  name: Entryway Light
+  state_topic: "zigbee2mqtt/0x000b57fffe2689c7"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/0x000b57fffe2689c7/set"
+  

@@ -1,17 +1,16 @@
 switch.zeus:
-    icon: "mdi:television"
+  icon: mdi:television
 switch.receiver:
-    icon: "mdi:dolby"
+  icon: mdi:dolby
 switch.xbox:
-    icon: "mdi:xbox"
-
-
+  icon: mdi:xbox
 light.gateway_light_7811dcb2249f:
-    friendly_name: Gateway Light
-
+  friendly_name: Gateway Light
 group.all_media_player:
-    hidden: false
+  hidden: false
 group.all_lights:
-    hidden: false
+  hidden: false
 group.all_switches:
-    hidden: false
+  hidden: false
+light.yeelight_strip_7811dc685d46:
+  friendly_name: Desk Light

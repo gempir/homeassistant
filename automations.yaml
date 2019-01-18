@@ -1,7 +1,7 @@
 - alias: "Bedroom Right Light Switch"     
   trigger:
       - platform: event
-        event_type: click
+        event_type: xiaomi_aqara.click
         event_data:
             entity_id: binary_sensor.wall_switch_left_158d0001f3f4cc
             click_type: single
@@ -13,7 +13,7 @@
 - alias: "Bedroom Left Light Switch"     
   trigger:
       - platform: event
-        event_type: click
+        event_type: xiaomi_aqara.click
         event_data:
             entity_id: binary_sensor.wall_switch_right_158d0001f3f4cc
             click_type: single
@@ -22,11 +22,10 @@
         data:
             entity_id: light.bed_light
 
-
 - alias: "Office Right Light Switch"     
   trigger:
       - platform: event
-        event_type: click
+        event_type: xiaomi_aqara.click
         event_data:
             entity_id: binary_sensor.wall_switch_left_158d0001e11856
             click_type: single
@@ -38,14 +37,14 @@
 - alias: "Office Left Light Switch"     
   trigger:
       - platform: event
-        event_type: click
+        event_type: xiaomi_aqara.click
         event_data:
             entity_id: binary_sensor.wall_switch_right_158d0001e11856
             click_type: single
   action:
       - service: light.toggle
         data:
-            entity_id: light.office_light
+            entity_id: light.desk_light
             
 - alias: "Kitchen Light on Motion"
   trigger:
@@ -97,3 +96,33 @@
       - service: hassio.addon_restart
         data:
           addon: core_letsencrypt
+          
+          
+# IKEA DIMMERS
+## OFFICE
+- alias: Office Dimmer off
+  trigger:
+    platform: state
+    entity_id: sensor.office_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int == 0 }}"
+  action:
+    service: light.turn_off
+    entity_id: light.office_light
+- alias: Office Dimmer on
+  trigger:
+    platform: state
+    entity_id: sensor.office_dimmer
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state|int != 0 }}"
+  action:
+    service: light.turn_on
+    entity_id: light.office_light
+    data_template:
+      brightness: "{{ trigger.to_state.state|int }}"
+      
+      
+      
+      
