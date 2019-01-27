@@ -11,6 +11,8 @@
   devices:
       192.168.178.28:
           name: Desk Light
+      192.168.178.45:
+          name: Computer Light
       192.168.178.31:
           name: Bed Light
       192.168.178.24:

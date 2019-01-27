@@ -6,8 +6,6 @@
   unit_of_measurement: "brightness"
   icon: "mdi:brightness-5"
   value_template: "{{ value_json.brightness }}"
-  json_attributes: 
-  - "linkquality"
 - platform: "mqtt"
   state_topic: "zigbee2mqtt/0x000b57fffe2543e4"
   name: entryway_dimmer
@@ -15,8 +13,6 @@
   unit_of_measurement: "brightness"
   icon: "mdi:brightness-5"
   value_template: "{{ value_json.brightness }}"
-  json_attributes: 
-  - "linkquality"
 - platform: "mqtt"
   state_topic: "zigbee2mqtt/0x000b57fffe24269f"
   name: storage_dimmer
@@ -24,9 +20,20 @@
   unit_of_measurement: "brightness"
   icon: "mdi:brightness-5"
   value_template: "{{ value_json.brightness }}"
-  json_attributes: 
-  - "linkquality"
-
+- platform: "mqtt"
+  state_topic: "zigbee2mqtt/0x000b57fffe277350"
+  name: toilet_dimmer
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: "brightness"
+  icon: "mdi:brightness-5"
+  value_template: "{{ value_json.brightness }}"
+- platform: "mqtt"
+  state_topic: "zigbee2mqtt/0x000b57fffe2528c7"
+  name: bedroom_dimmer
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: "brightness"
+  icon: "mdi:brightness-5"
+  value_template: "{{ value_json.brightness }}"
 
 # Wallswitches
 - platform: "mqtt"
@@ -35,12 +42,6 @@
   availability_topic: "zigbee2mqtt/bridge/state"
   icon: "mdi:toggle-switch"
   value_template: "{{ value_json.click }}"
-  json_attributes: 
-  - "linkquality"
-  - "battery"
-  - "voltage"
-  - "action"
-  - "duration"
   force_update: true
 - platform: "mqtt"
   name: bedroom_switch
@@ -48,10 +49,4 @@
   availability_topic: "zigbee2mqtt/bridge/state"
   icon: "mdi:toggle-switch"
   value_template: "{{ value_json.click }}"
-  json_attributes: 
-  - "linkquality"
-  - "battery"
-  - "voltage"
-  - "action"
-  - "duration"
   force_update: true
