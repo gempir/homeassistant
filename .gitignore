@@ -14,3 +14,4 @@ entity_registry.yaml
 .config-entries.json
 .storage/
 configurator.py
+configurator.py.save

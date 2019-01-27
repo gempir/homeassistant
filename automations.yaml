@@ -1,53 +1,73 @@
-# - alias: "Bedroom Right Light Switch"     
-#   trigger:
-#       - platform: event
-#         event_type: xiaomi_aqara.click
-#         event_data:
-#             entity_id: binary_sensor.wall_switch_left_158d0001f3f4cc
-#             click_type: single
-#   action:
-#       - service: light.toggle
-#         data:
-#             entity_id: light.office_light
-            
-# - alias: "Bedroom Left Light Switch"     
-#   trigger:
-#       - platform: event
-#         event_type: xiaomi_aqara.click
-#         event_data:
-#             entity_id: binary_sensor.wall_switch_right_158d0001f3f4cc
-#             click_type: single
-#   action:
-#       - service: light.toggle
-#         data:
-#             entity_id: light.bed_light
+- id: letsencrypt-renewal
+  alias: "Let's Encrypt Renewal"
+  trigger:
+      - platform: time
+        at: '00:00:00'
+  action:
+      - service: hassio.addon_restart
+        data:
+          addon: core_letsencrypt
 
-# - alias: "Office Right Light Switch"     
-#   trigger:
-#       platform: state
-#       entity_id: sensor.office_switch
-#       to: 'left'
-#   action:
-#       - service: light.toggle
-#         data:
-#             entity_id: light.living_room_light
+# Wallswitches
+- alias: "Office Right Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.office_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.living_room_light
             
-# - alias: "Office Left Light Switch"     
-#   trigger:
-#       - platform: event
-#         event_type: xiaomi_aqara.click
-#         event_data:
-#             entity_id: sensor.office_switch=left
-#   action:
-#       - service: light.toggle
-#         data:
-#             entity_id: light.office_light
+- alias: "Office Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.office_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.desk_light
             
+- alias: "Bedroom Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.bedroom_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.bed_light
+            
+- alias: "Bedroom Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.bedroom_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.toilet_light
+            
+
+# Motion
 - alias: "Kitchen Light on Motion"
   trigger:
       - platform: state
         entity_id: binary_sensor.kitchen_motion
-        to: 'on'
+        to: "on"
   action:
       - service: light.turn_on
         entity_id: light.kitchen_light
@@ -56,7 +76,7 @@
   trigger:
       - platform: state
         entity_id: binary_sensor.kitchen_motion
-        to: 'off'
+        to: "off"
         for:
             minutes: 1
   action:
@@ -68,7 +88,7 @@
   trigger:
       - platform: state
         entity_id: binary_sensor.entryway_motion
-        to: 'on'
+        to: "on"
   action:
       - service: light.turn_on
         entity_id: light.entryway_light
@@ -77,23 +97,12 @@
   trigger:
       - platform: state
         entity_id: binary_sensor.entryway_motion
-        to: 'off'
+        to: "off"
         for:
             minutes: 1
   action:
     service: light.turn_off
     entity_id: light.entryway_light
-  
-- id: letsencrypt-renewal
-  alias: "Let's Encrypt Renewal"
-  trigger:
-      - platform: time
-        at: '00:00:00'
-  action:
-      - service: hassio.addon_restart
-        data:
-          addon: core_letsencrypt
-          
           
 # IKEA DIMMERS
 ## OFFICE
@@ -106,7 +115,7 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.desk_light
+    entity_id: light.office_light
 - alias: Office Dimmer on
   trigger:
     platform: state
@@ -116,7 +125,7 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.desk_light
+    entity_id: light.office_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
 ## Entryway

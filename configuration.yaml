@@ -35,6 +35,7 @@ discovery:
     ignore:
     - plex_mediaserver
     - yeelight
+    - igd
 
 # Text to speech
 tts:
@@ -45,6 +46,7 @@ lovelace:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+binary_sensor: !include binary_sensor.yaml
 sensor: !include sensor.yaml
 light: !include light.yaml
 switch: !include switch.yaml
@@ -56,5 +58,6 @@ panel_iframe:
         url: !secret configurator
 
 mqtt:  
+    broker: 127.0.0.1
+    username: !secret mqtt_username
     password: !secret mqtt_password
-
