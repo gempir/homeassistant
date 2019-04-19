@@ -7,6 +7,7 @@
   rgb: true
   optimistic: false
   qos: 0
+
 - platform: "mqtt"
   name: Office Light
   state_topic: "zigbee2mqtt/0x000b57fffe0ee020"
@@ -14,6 +15,7 @@
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe0ee020/set"
+
 - platform: "mqtt"
   name: Storage Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe260d2b"
@@ -21,6 +23,7 @@
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe260d2b/set"
+
 - platform: "mqtt"
   name: Toilet Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe2de8b4"
@@ -28,6 +31,7 @@
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe2de8b4/set"
+
 - platform: "mqtt"
   name: Bedroom Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe161262"
@@ -35,6 +39,7 @@
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe161262/set"
+
 - platform: "mqtt"
   name: Entryway Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe2689c7"
@@ -42,4 +47,4 @@
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe2689c7/set"
-  
+
