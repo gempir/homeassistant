@@ -1,5 +1,6 @@
 - id: letsencrypt-renewal
   alias: "Let's Encrypt Renewal"
+  initial_state: true
   trigger:
       - platform: time
         at: '00:00:00'
@@ -7,9 +8,57 @@
       - service: hassio.addon_restart
         data:
           addon: core_letsencrypt
+          
+# Motion
+- alias: "Kitchen Light on Motion"
+  initial_state: true
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.kitchen_motion
+        to: "on"
+  action:
+      - service: light.turn_on
+        entity_id: light.kitchen_ceiling_light
+        
+- alias: "Kitchen Light off after 1 Minute"
+  initial_state: true
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.kitchen_motion
+        to: "off"
+        for:
+            minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen_ceiling_light
+            
+            
+- alias: "Entry Light on Motion"
+  initial_state: true
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.entryway_motion
+        to: "on"
+  action:
+      - service: light.turn_on
+        entity_id: light.entryway_ceiling_light
+        
+- alias: "Entry Light off after 1 Minute"
+  initial_state: true
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.entryway_motion
+        to: "off"
+        for:
+            minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.entryway_ceiling_light
 
-# Wallswitches
-- alias: "Office Right Light Switch"     
+
+## Wallswitches
+- alias: "Office Right Light Switch"
+  initial_state: true
   trigger:
       platform: state
       entity_id: sensor.office_switch
@@ -20,9 +69,10 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.living_room_light
+            entity_id: light.living_room_ceiling_light
             
-- alias: "Office Left Light Switch"     
+- alias: "Office Left Light Switch"
+  initial_state: true
   trigger:
       platform: state
       entity_id: sensor.office_switch
@@ -33,7 +83,7 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.desk_light
+            entity_id: light.computer_light
             
 - alias: "Bedroom Left Light Switch"     
   trigger:
@@ -48,7 +98,8 @@
         data:
             entity_id: light.bed_light
             
-- alias: "Bedroom Left Light Switch"     
+- alias: "Bedroom Right Light Switch"
+  initial_state: true
   trigger:
       platform: state
       entity_id: sensor.bedroom_switch
@@ -59,54 +110,12 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.toilet_light
-            
-
-# Motion
-- alias: "Kitchen Light on Motion"
-  trigger:
-      - platform: state
-        entity_id: binary_sensor.kitchen_motion
-        to: "on"
-  action:
-      - service: light.turn_on
-        entity_id: light.kitchen_light
-        
-- alias: "Kitchen Light off after 1 Minute"
-  trigger:
-      - platform: state
-        entity_id: binary_sensor.kitchen_motion
-        to: "off"
-        for:
-            minutes: 1
-  action:
-    service: light.turn_off
-    entity_id: light.kitchen_light
-            
-            
-- alias: "Entry Light on Motion"
-  trigger:
-      - platform: state
-        entity_id: binary_sensor.entryway_motion
-        to: "on"
-  action:
-      - service: light.turn_on
-        entity_id: light.entryway_light
-        
-- alias: "Entry Light off after 1 Minute"
-  trigger:
-      - platform: state
-        entity_id: binary_sensor.entryway_motion
-        to: "off"
-        for:
-            minutes: 1
-  action:
-    service: light.turn_off
-    entity_id: light.entryway_light
+            entity_id: light.toilet_ceiling_light
           
 # IKEA DIMMERS
 ## OFFICE
 - alias: Office Dimmer off
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.office_dimmer
@@ -115,8 +124,9 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.office_light
+    entity_id: light.office_ceiling_light
 - alias: Office Dimmer on
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.office_dimmer
@@ -125,11 +135,12 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.office_light
+    entity_id: light.office_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
 ## Entryway
 - alias: Entryway Dimmer off
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.entryway_dimmer
@@ -138,8 +149,9 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.entryway_light
+    entity_id: light.entryway_ceiling_light
 - alias: Entryway Dimmer on
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.entryway_dimmer
@@ -148,11 +160,12 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.entryway_light
+    entity_id: light.entryway_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
 ## Storage
 - alias: Storage Dimmer off
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.storage_dimmer
@@ -161,8 +174,9 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.storage_light
+    entity_id: light.storage_ceiling_light
 - alias: Storage Dimmer on
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.storage_dimmer
@@ -171,11 +185,12 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.storage_light
+    entity_id: light.storage_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
 ## Toilet
 - alias: Toilet Dimmer off
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.toilet_dimmer
@@ -184,8 +199,9 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.toilet_light
+    entity_id: light.toilet_ceiling_light
 - alias: Toilet Dimmer on
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.toilet_dimmer
@@ -194,11 +210,12 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.toilet_light
+    entity_id: light.toilet_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
 ## Bedroom
 - alias: Bedroom Dimmer off
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.bedroom_dimmer
@@ -207,8 +224,9 @@
     value_template: "{{ trigger.to_state.state|int == 0 }}"
   action:
     service: light.turn_off
-    entity_id: light.bedroom_light
+    entity_id: light.bedroom_ceiling_light
 - alias: Bedroom Dimmer on
+  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.bedroom_dimmer
@@ -217,10 +235,8 @@
     value_template: "{{ trigger.to_state.state|int != 0 }}"
   action:
     service: light.turn_on
-    entity_id: light.bedroom_light
+    entity_id: light.bedroom_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
-      
-      
       
       

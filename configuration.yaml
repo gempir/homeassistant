@@ -12,7 +12,7 @@ frontend:
 
 # Enables configuration UI
 config:
-
+system_health:
 google_assistant:
   project_id: ga_project_id
   api_key: ga_api_key
@@ -36,6 +36,7 @@ discovery:
     - plex_mediaserver
     - yeelight
     - igd
+    - yeelight
 
 # Text to speech
 tts:
@@ -49,6 +50,7 @@ script: !include scripts.yaml
 binary_sensor: !include binary_sensor.yaml
 sensor: !include sensor.yaml
 light: !include light.yaml
+yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 
 panel_iframe:

@@ -7,52 +7,36 @@
   rgb: true
   optimistic: false
   qos: 0
-- platform: yeelight
-  devices:
-      192.168.178.28:
-          name: Desk Light
-      192.168.178.45:
-          name: Computer Light
-      192.168.178.31:
-          name: Bed Light
-      192.168.178.24:
-          name: Living Room Light
-      192.168.178.32:
-          name: Couch Light
-      192.168.178.42:
-          name: Bathroom Light
-      192.168.178.44:
-          name: Kitchen Light
 - platform: "mqtt"
-  name: Office Light
+  name: Office Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe0ee020"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe0ee020/set"
 - platform: "mqtt"
-  name: Storage Light
+  name: Storage Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe260d2b"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe260d2b/set"
 - platform: "mqtt"
-  name: Toilet Light
+  name: Toilet Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe2de8b4"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe2de8b4/set"
 - platform: "mqtt"
-  name: Bedroom Light
+  name: Bedroom Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe161262"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true
   schema: "json"
   command_topic: "zigbee2mqtt/0x000b57fffe161262/set"
 - platform: "mqtt"
-  name: Entryway Light
+  name: Entryway Ceiling Light
   state_topic: "zigbee2mqtt/0x000b57fffe2689c7"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true

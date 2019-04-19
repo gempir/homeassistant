@@ -12,5 +12,5 @@ group.all_lights:
   hidden: false
 group.all_switches:
   hidden: false
-light.yeelight_strip_7811dc685d46:
-  friendly_name: Desk Light
+# light.yeelight_strip_7811dc685d46:
+#   friendly_name: Desk Light

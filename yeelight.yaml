@@ -1,0 +1,15 @@
+devices:
+    192.168.178.24:
+        name: Living Room Ceiling Light
+    192.168.178.28:
+        name: Desk Light
+    192.168.178.31:
+        name: Bed Light
+    192.168.178.32:
+        name: Couch Light
+    192.168.178.42:
+        name: Bathroom Ceiling Light
+    192.168.178.44:
+        name: Kitchen Ceiling Light
+    192.168.178.45:
+        name: Computer Light
