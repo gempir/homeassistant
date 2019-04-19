@@ -1,6 +1,5 @@
 - id: letsencrypt-renewal
   alias: "Let's Encrypt Renewal"
-  initial_state: true
   trigger:
       - platform: time
         at: '00:00:00'
@@ -8,7 +7,60 @@
       - service: hassio.addon_restart
         data:
           addon: core_letsencrypt
-          
+
+# Wallswitches
+- alias: "Office Right Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.office_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.living_room_light
+            
+- alias: "Office Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.office_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.desk_light
+            
+- alias: "Bedroom Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.bedroom_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.bed_light
+            
+- alias: "Bedroom Right Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.bedroom_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.toilet_light
+
 # Motion
 - alias: "Kitchen Light on Motion"
   initial_state: true
@@ -126,7 +178,6 @@
     service: light.turn_off
     entity_id: light.office_ceiling_light
 - alias: Office Dimmer on
-  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.office_dimmer
@@ -238,5 +289,3 @@
     entity_id: light.bedroom_ceiling_light
     data_template:
       brightness: "{{ trigger.to_state.state|int }}"
-      
-      

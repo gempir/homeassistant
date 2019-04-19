@@ -8,7 +8,7 @@
   optimistic: false
   qos: 0
 - platform: "mqtt"
-  name: Office Ceiling Light
+  name: Office Light
   state_topic: "zigbee2mqtt/0x000b57fffe0ee020"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true
