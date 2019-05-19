@@ -64,4 +64,11 @@
   icon: "mdi:toggle-switch"
   value_template: "{{ value_json.click }}"
   force_update: true
-
+- platform: "mqtt"
+  name: living_room_switch
+  state_topic: "zigbee2mqtt/0x00158d0002ea052f"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  icon: "mdi:toggle-switch"
+  value_template: "{{ value_json.click }}"
+  force_update: true
+  

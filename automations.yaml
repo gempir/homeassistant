@@ -20,7 +20,7 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.living_room_light
+            entity_id: light.desk_light
             
 - alias: "Office Left Light Switch"     
   trigger:
@@ -33,7 +33,33 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.desk_light
+            entity_id: light.workbench_light
+            
+- alias: "Living Room Right Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.living_room_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.living_room_ceiling_light
+            
+- alias: "Living Room Left Light Switch"     
+  trigger:
+      platform: state
+      entity_id: sensor.living_room_switch
+  condition:
+      condition: template
+      value_template: >
+          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+  action:
+      - service: light.toggle
+        data:
+            entity_id: light.couch_light
             
 - alias: "Bedroom Left Light Switch"     
   trigger:
@@ -59,7 +85,7 @@
   action:
       - service: light.toggle
         data:
-            entity_id: light.toilet_light
+            entity_id: light.bedroom_ceiling_light
 
 # Motion
 - alias: "Kitchen Light on Motion"
@@ -107,63 +133,50 @@
     service: light.turn_off
     entity_id: light.entryway_ceiling_light
 
-
-## Wallswitches
-- alias: "Office Right Light Switch"
+- alias: "Bathroom Light on Motion"
   initial_state: true
   trigger:
-      platform: state
-      entity_id: sensor.office_switch
-  condition:
-      condition: template
-      value_template: >
-          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+      - platform: state
+        entity_id: binary_sensor.bathroom_motion
+        to: "on"
   action:
-      - service: light.toggle
-        data:
-            entity_id: light.living_room_ceiling_light
-            
-- alias: "Office Left Light Switch"
+      - service: light.turn_on
+        entity_id: light.bathroom_ceiling_light
+        
+- alias: "Bathroom Light off after 1 Minute"
   initial_state: true
   trigger:
-      platform: state
-      entity_id: sensor.office_switch
-  condition:
-      condition: template
-      value_template: >
-          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
+      - platform: state
+        entity_id: binary_sensor.bathroom_motion
+        to: "off"
+        for:
+            minutes: 1
   action:
-      - service: light.toggle
-        data:
-            entity_id: light.computer_light
-            
-- alias: "Bedroom Left Light Switch"     
-  trigger:
-      platform: state
-      entity_id: sensor.bedroom_switch
-  condition:
-      condition: template
-      value_template: >
-          {{ trigger.to_state is not none and trigger.to_state.state == 'right' }}
-  action:
-      - service: light.toggle
-        data:
-            entity_id: light.bed_light
-            
-- alias: "Bedroom Right Light Switch"
+    service: light.turn_off
+    entity_id: light.bathroom_ceiling_light
+    
+- alias: "Toilet Light on Motion"
   initial_state: true
   trigger:
-      platform: state
-      entity_id: sensor.bedroom_switch
-  condition:
-      condition: template
-      value_template: >
-          {{ trigger.to_state is not none and trigger.to_state.state == 'left' }}
+      - platform: state
+        entity_id: binary_sensor.toilet_motion
+        to: "on"
   action:
-      - service: light.toggle
-        data:
-            entity_id: light.toilet_ceiling_light
-          
+      - service: light.turn_on
+        entity_id: light.toilet_ceiling_light
+        
+- alias: "Toilet Light off after 1 Minute"
+  initial_state: true
+  trigger:
+      - platform: state
+        entity_id: binary_sensor.toilet_motion
+        to: "off"
+        for:
+            minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.toilet_ceiling_light
+    
 # IKEA DIMMERS
 ## OFFICE
 - alias: Office Dimmer off
