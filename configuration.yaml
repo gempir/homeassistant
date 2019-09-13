@@ -22,11 +22,7 @@ google_assistant:
     - script
             
 http:
-    # Secrets are defined in the file secrets.yaml
-    api_password: !secret http_password
-    # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
     base_url: !secret base_url
-
 
 updater:
 
@@ -37,10 +33,6 @@ discovery:
     - yeelight
     - igd
     - yeelight
-
-# Text to speech
-tts:
-    - platform: google
     
 lovelace:
 
@@ -53,13 +45,7 @@ light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 
-panel_iframe:
-    configurator:
-        title: Configurator
-        icon: mdi:wrench
-        url: !secret configurator
-
 mqtt:  
-    broker: 127.0.0.1
+    broker: !secret mqtt_host
     username: !secret mqtt_username
     password: !secret mqtt_password
