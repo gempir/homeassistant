@@ -14,13 +14,13 @@ frontend:
 config:
 system_health:
 google_assistant:
-  project_id: ga_project_id
-  api_key: ga_api_key
-  exposed_domains:
-    - switch
-    - light
-    - script
-            
+    project_id: ga_project_id
+    api_key: ga_api_key
+    exposed_domains:
+        - switch
+        - light
+        - script
+
 http:
     base_url: !secret base_url
 
@@ -29,11 +29,11 @@ updater:
 # Discover some devices automatically
 discovery:
     ignore:
-    - plex_mediaserver
-    - yeelight
-    - igd
-    - yeelight
-    
+        - plex_mediaserver
+        - yeelight
+        - igd
+        - yeelight
+
 lovelace:
 
 group: !include groups.yaml
@@ -45,7 +45,13 @@ light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 
-mqtt:  
+panel_iframe:
+    deconz:
+        title: "Deconz"
+        url: "https://deconz.gempir.com"
+        icon: "mdi:router-wireless"
+
+mqtt:
     broker: !secret mqtt_host
     username: !secret mqtt_username
     password: !secret mqtt_password

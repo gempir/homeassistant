@@ -3,7 +3,7 @@ switch.zeus:
 switch.receiver:
   icon: mdi:dolby
 switch.xbox:
-  icon: mdi:xboxt
+  icon: mdi:xbox
 group.all_media_player:
   hidden: false
 group.all_lights:
