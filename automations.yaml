@@ -1,160 +1,218 @@
-# Motion
-- alias: "Kitchen Light on Motion"
-  initial_state: true
+- id: '1583779015997'
+  alias: Entryway On
+  description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion
-      to: "on"
+  - device_id: f979b5c452674a37808edcbeb981e43a
+    domain: binary_sensor
+    entity_id: binary_sensor.entryway_motion
+    platform: device
+    type: motion
+  condition: []
   action:
-    - service: light.turn_on
-      entity_id: light.kitchen_ceiling_light
-
-- alias: "Kitchen Light off after 1 Minute"
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion
-      to: "off"
-      for:
-        minutes: 1
-  action:
-    service: light.turn_off
-    entity_id: light.kitchen_ceiling_light
-
-- alias: "Entry Light on Motion"
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.entryway_motion
-      to: "on"
-  action:
-    - service: light.turn_on
-      entity_id: light.entryway_ceiling_light
-
-- alias: "Entry Light off after 1 Minute"
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.entryway_motion
-      to: "off"
-      for:
-        minutes: 1
-  action:
-    service: light.turn_off
+  - device_id: 337d43e9503442b991d75334f75eef59
+    domain: light
     entity_id: light.entryway_ceiling_light
-
-- alias: "Bathroom Light on Motion"
-  initial_state: true
+    type: turn_on
+- id: '1583779064247'
+  alias: Entryway Off
+  description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bathroom_motion
-      to: "on"
+  - device_id: f979b5c452674a37808edcbeb981e43a
+    domain: binary_sensor
+    entity_id: binary_sensor.entryway_motion
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
   action:
-    - service: light.turn_on
-      entity_id: light.bathroom_ceiling_light
-
-- alias: "Bathroom Light off after 1 Minute"
-  initial_state: true
+  - device_id: 337d43e9503442b991d75334f75eef59
+    domain: light
+    entity_id: light.entryway_ceiling_light
+    type: turn_off
+- id: '1583779363886'
+  alias: Kitchen On
+  description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bathroom_motion
-      to: "off"
-      for:
-        minutes: 1
+  - device_id: 4b7aa3b8d48f424f8dd0b584c36e908e
+    domain: binary_sensor
+    entity_id: binary_sensor.kitchen_motion
+    platform: device
+    type: motion
+  condition: []
   action:
+  - data: {}
+    entity_id: light.kitchen_ceiling_light
+    service: light.turn_on
+- id: '1583779463844'
+  alias: Kitchen Off
+  description: ''
+  trigger:
+  - device_id: 4b7aa3b8d48f424f8dd0b584c36e908e
+    domain: binary_sensor
+    entity_id: binary_sensor.kitchen_motion
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.kitchen_ceiling_light
     service: light.turn_off
+- id: '1583779540423'
+  alias: Bathroom On
+  description: ''
+  trigger:
+  - device_id: b434a311451445f5bd1311aa7805f78e
+    domain: binary_sensor
+    entity_id: binary_sensor.bathroom_motion
+    platform: device
+    type: motion
+  condition: []
+  action:
+  - data: {}
     entity_id: light.bathroom_ceiling_light
-
-- alias: "Toilet Light on Motion"
-  initial_state: true
+    service: homeassistant.turn_on
+- id: '1583779578603'
+  alias: Bathroom Off
+  description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.toilet_motion
-      to: "on"
+  - device_id: b434a311451445f5bd1311aa7805f78e
+    domain: binary_sensor
+    entity_id: binary_sensor.bathroom_motion
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
   action:
-    - service: light.turn_on
-      entity_id: light.toilet_ceiling_light
-
-- alias: "Toilet Light off after 1 Minute"
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.toilet_motion
-      to: "off"
-      for:
-        minutes: 1
-  action:
+  - data: {}
+    entity_id: light.bathroom_ceiling_light
     service: light.turn_off
-    entity_id: light.toilet_ceiling_light
-
-- alias: "Living Room Switch Left"
-  initial_state: true
+- id: '1588407325192'
+  alias: Switch Office Right
+  description: ''
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 2002
+  - device_id: 81d92d3b38384ad48e27e94412818d86
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
   action:
-    service: light.toggle
-    entity_id: light.couch_light
-
-- alias: "Living Room Switch Right"
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 1002
-  action:
-    service: light.toggle
-    entity_id: light.living_room_ceiling_light
-
-- alias: "Office Switch Left"
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 2002
-  action:
-    service: light.toggle
-    entity_id: light.desk_light
-
-- alias: "Office Switch Right"
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 1002
-  action:
-    service: light.toggle
+  - device_id: 13934968e7ed417880b89fe983587f3c
+    domain: light
     entity_id: light.office_ceiling_light
-
-- alias: "Bedroom Switch Left"
-  initial_state: true
+    type: toggle
+- id: '1588407347730'
+  alias: Switch Office Left
+  description: ''
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch
-      event: 2002
+  - device_id: 81d92d3b38384ad48e27e94412818d86
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
   action:
+  - data: {}
+    entity_id: light.desk_light
     service: light.toggle
+- id: '1588407496473'
+  alias: Switch Bedroom Left
+  description: ''
+  trigger:
+  - device_id: c1c583b76dc1462bbff9d3f1146acfdd
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
     entity_id: light.bed_light
-
-- alias: "Bedroom Switch Right"
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch
-      event: 1002
-  action:
     service: light.toggle
+- id: '1588407579128'
+  alias: Switch Bedroom Right
+  description: ''
+  trigger:
+  - device_id: c1c583b76dc1462bbff9d3f1146acfdd
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - device_id: 151325c4a56e4e4e87be053f6f7e8c4d
+    domain: light
     entity_id: light.bedroom_ceiling_light
+    type: toggle
+- id: '1588407611304'
+  alias: Switch Living Room Left
+  description: ''
+  trigger:
+  - device_id: e9740b01051645d1824611ad37090270
+    domain: deconz
+    platform: device
+    subtype: right
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.couch_light
+    service: light.toggle
+- id: '1588407659074'
+  alias: Switch Living Room Right
+  description: ''
+  trigger:
+  - device_id: e9740b01051645d1824611ad37090270
+    domain: deconz
+    platform: device
+    subtype: left
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.living_room_ceiling_light
+    service: light.toggle
+- id: '1588458523846'
+  alias: Toilet On
+  description: ''
+  trigger:
+  - device_id: c5d58cf56ee04601bd863e20a41a615b
+    domain: binary_sensor
+    entity_id: binary_sensor.toilet_motion
+    platform: device
+    type: motion
+  condition: []
+  action:
+  - device_id: 56a12ef92607411e89f42477605f0542
+    domain: light
+    entity_id: light.toilet_light
+    type: turn_on
+- id: '1588458560538'
+  alias: Toilet Off
+  description: ''
+  trigger:
+  - device_id: c5d58cf56ee04601bd863e20a41a615b
+    domain: binary_sensor
+    entity_id: binary_sensor.toilet_motion
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+    platform: device
+    type: no_motion
+  condition: []
+  action:
+  - device_id: 56a12ef92607411e89f42477605f0542
+    domain: light
+    entity_id: light.toilet_light
+    type: turn_off

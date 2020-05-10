@@ -15,3 +15,4 @@ entity_registry.yaml
 .storage/
 configurator.py
 configurator.py.save
+google_assistant.json

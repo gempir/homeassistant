@@ -13,13 +13,17 @@ frontend:
 # Enables configuration UI
 config:
 system_health:
+mobile_app:
+
 google_assistant:
     project_id: ga_project_id
-    api_key: ga_api_key
+    service_account: !include google_assistant.json
     exposed_domains:
-        - switch
         - light
-        - script
+
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
 
 http:
     base_url: !secret base_url
@@ -29,7 +33,6 @@ updater:
 # Discover some devices automatically
 discovery:
     ignore:
-        - plex_mediaserver
         - yeelight
         - igd
         - yeelight
@@ -45,13 +48,14 @@ light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 
-panel_iframe:
-    deconz:
-        title: "Deconz"
-        url: "https://deconz.gempir.com"
-        icon: "mdi:router-wireless"
-
 mqtt:
     broker: !secret mqtt_host
     username: !secret mqtt_username
     password: !secret mqtt_password
+
+
+panel_iframe:
+    phoscon:
+        title: Phoscon 
+        icon: mdi:alpha-p-circle
+        url: !secret phoscon_url
