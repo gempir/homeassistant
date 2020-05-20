@@ -2,7 +2,7 @@
   alias: Entryway On
   description: ''
   trigger:
-  - device_id: f979b5c452674a37808edcbeb981e43a
+  - device_id: 259dc51cce9e4fceb5484372e993328c
     domain: binary_sensor
     entity_id: binary_sensor.entryway_motion
     platform: device
@@ -17,7 +17,7 @@
   alias: Entryway Off
   description: ''
   trigger:
-  - device_id: f979b5c452674a37808edcbeb981e43a
+  - device_id: 259dc51cce9e4fceb5484372e993328c
     domain: binary_sensor
     entity_id: binary_sensor.entryway_motion
     for:
@@ -36,7 +36,7 @@
   alias: Kitchen On
   description: ''
   trigger:
-  - device_id: 4b7aa3b8d48f424f8dd0b584c36e908e
+  - device_id: acb4f9f8551748d884fe92b0cd9ed2bf
     domain: binary_sensor
     entity_id: binary_sensor.kitchen_motion
     platform: device
@@ -50,7 +50,7 @@
   alias: Kitchen Off
   description: ''
   trigger:
-  - device_id: 4b7aa3b8d48f424f8dd0b584c36e908e
+  - device_id: acb4f9f8551748d884fe92b0cd9ed2bf
     domain: binary_sensor
     entity_id: binary_sensor.kitchen_motion
     for:
@@ -68,7 +68,7 @@
   alias: Bathroom On
   description: ''
   trigger:
-  - device_id: b434a311451445f5bd1311aa7805f78e
+  - device_id: 663183c5bdf644fd98d5eaff488d70b5
     domain: binary_sensor
     entity_id: binary_sensor.bathroom_motion
     platform: device
@@ -82,7 +82,7 @@
   alias: Bathroom Off
   description: ''
   trigger:
-  - device_id: b434a311451445f5bd1311aa7805f78e
+  - device_id: 663183c5bdf644fd98d5eaff488d70b5
     domain: binary_sensor
     entity_id: binary_sensor.bathroom_motion
     for:
@@ -100,7 +100,7 @@
   alias: Switch Office Right
   description: ''
   trigger:
-  - device_id: 81d92d3b38384ad48e27e94412818d86
+  - device_id: 5982b3f185eb4322b9d28835cfcfa622
     domain: deconz
     platform: device
     subtype: left
@@ -115,7 +115,7 @@
   alias: Switch Office Left
   description: ''
   trigger:
-  - device_id: 81d92d3b38384ad48e27e94412818d86
+  - device_id: 5982b3f185eb4322b9d28835cfcfa622
     domain: deconz
     platform: device
     subtype: right
@@ -129,7 +129,7 @@
   alias: Switch Bedroom Left
   description: ''
   trigger:
-  - device_id: c1c583b76dc1462bbff9d3f1146acfdd
+  - device_id: 4f1da87fe1bb4fbeb9089c258b2ae223
     domain: deconz
     platform: device
     subtype: right
@@ -143,7 +143,7 @@
   alias: Switch Bedroom Right
   description: ''
   trigger:
-  - device_id: c1c583b76dc1462bbff9d3f1146acfdd
+  - device_id: 4f1da87fe1bb4fbeb9089c258b2ae223
     domain: deconz
     platform: device
     subtype: left
@@ -158,7 +158,7 @@
   alias: Switch Living Room Left
   description: ''
   trigger:
-  - device_id: e9740b01051645d1824611ad37090270
+  - device_id: b582d57fbaf8442ca953b48d27077bac
     domain: deconz
     platform: device
     subtype: right
@@ -172,7 +172,7 @@
   alias: Switch Living Room Right
   description: ''
   trigger:
-  - device_id: e9740b01051645d1824611ad37090270
+  - device_id: b582d57fbaf8442ca953b48d27077bac
     domain: deconz
     platform: device
     subtype: left
@@ -186,7 +186,7 @@
   alias: Toilet On
   description: ''
   trigger:
-  - device_id: c5d58cf56ee04601bd863e20a41a615b
+  - device_id: 1fb03f723ba547219c323a4879bc338b
     domain: binary_sensor
     entity_id: binary_sensor.toilet_motion
     platform: device
@@ -201,13 +201,9 @@
   alias: Toilet Off
   description: ''
   trigger:
-  - device_id: c5d58cf56ee04601bd863e20a41a615b
+  - device_id: 1fb03f723ba547219c323a4879bc338b
     domain: binary_sensor
     entity_id: binary_sensor.toilet_motion
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
     platform: device
     type: no_motion
   condition: []
