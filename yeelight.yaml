@@ -11,5 +11,3 @@ devices:
         name: Bathroom Ceiling Light
     192.168.178.31:
         name: Kitchen Ceiling Light
-    192.168.178.37:
-        name: Workbench Light

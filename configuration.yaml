@@ -30,13 +30,6 @@ http:
 
 updater:
 
-# Discover some devices automatically
-discovery:
-    ignore:
-        - yeelight
-        - igd
-        - yeelight
-
 lovelace:
 
 group: !include groups.yaml
