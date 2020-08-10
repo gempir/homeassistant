@@ -2,9 +2,13 @@
   alias: Entryway On
   description: ''
   trigger:
-  - device_id: 259dc51cce9e4fceb5484372e993328c
+  - device_id: b69e082bb69a4dd09024c325bc65398a
     domain: binary_sensor
-    entity_id: binary_sensor.entryway_motion
+    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
     platform: device
     type: motion
   condition: []
@@ -13,16 +17,17 @@
     domain: light
     entity_id: light.entryway_ceiling_light
     type: turn_on
+  mode: single
 - id: '1583779064247'
   alias: Entryway Off
   description: ''
   trigger:
-  - device_id: 259dc51cce9e4fceb5484372e993328c
+  - device_id: b69e082bb69a4dd09024c325bc65398a
     domain: binary_sensor
-    entity_id: binary_sensor.entryway_motion
+    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
     for:
       hours: 0
-      minutes: 5
+      minutes: 3
       seconds: 0
     platform: device
     type: no_motion
@@ -32,13 +37,14 @@
     domain: light
     entity_id: light.entryway_ceiling_light
     type: turn_off
+  mode: single
 - id: '1583779363886'
   alias: Kitchen On
   description: ''
   trigger:
-  - device_id: acb4f9f8551748d884fe92b0cd9ed2bf
+  - device_id: 4ff6a258f1614075b7a28321835c796c
     domain: binary_sensor
-    entity_id: binary_sensor.kitchen_motion
+    entity_id: binary_sensor.kitchen_motion_ias_zone
     platform: device
     type: motion
   condition: []
@@ -46,16 +52,17 @@
   - data: {}
     entity_id: light.kitchen_ceiling_light
     service: light.turn_on
+  mode: single
 - id: '1583779463844'
   alias: Kitchen Off
   description: ''
   trigger:
-  - device_id: acb4f9f8551748d884fe92b0cd9ed2bf
+  - device_id: 4ff6a258f1614075b7a28321835c796c
     domain: binary_sensor
-    entity_id: binary_sensor.kitchen_motion
+    entity_id: binary_sensor.kitchen_motion_ias_zone
     for:
       hours: 0
-      minutes: 5
+      minutes: 3
       seconds: 0
     platform: device
     type: no_motion
@@ -64,13 +71,14 @@
   - data: {}
     entity_id: light.kitchen_ceiling_light
     service: light.turn_off
+  mode: single
 - id: '1583779540423'
   alias: Bathroom On
   description: ''
   trigger:
-  - device_id: 663183c5bdf644fd98d5eaff488d70b5
+  - device_id: 011d2b04ae864e34bb702c4aa6eb9669
     domain: binary_sensor
-    entity_id: binary_sensor.bathroom_motion
+    entity_id: binary_sensor.bathroom_motion_ias_zone
     platform: device
     type: motion
   condition: []
@@ -78,16 +86,17 @@
   - data: {}
     entity_id: light.bathroom_ceiling_light
     service: homeassistant.turn_on
+  mode: single
 - id: '1583779578603'
   alias: Bathroom Off
   description: ''
   trigger:
-  - device_id: 663183c5bdf644fd98d5eaff488d70b5
+  - device_id: 011d2b04ae864e34bb702c4aa6eb9669
     domain: binary_sensor
-    entity_id: binary_sensor.bathroom_motion
+    entity_id: binary_sensor.bathroom_motion_ias_zone
     for:
       hours: 0
-      minutes: 5
+      minutes: 3
       seconds: 0
     platform: device
     type: no_motion
@@ -96,99 +105,14 @@
   - data: {}
     entity_id: light.bathroom_ceiling_light
     service: light.turn_off
-- id: '1588407325192'
-  alias: Switch Office Right
-  description: ''
-  trigger:
-  - device_id: 5982b3f185eb4322b9d28835cfcfa622
-    domain: deconz
-    platform: device
-    subtype: left
-    type: remote_button_short_press
-  condition: []
-  action:
-  - device_id: 13934968e7ed417880b89fe983587f3c
-    domain: light
-    entity_id: light.office_ceiling_light
-    type: toggle
-- id: '1588407347730'
-  alias: Switch Office Left
-  description: ''
-  trigger:
-  - device_id: 5982b3f185eb4322b9d28835cfcfa622
-    domain: deconz
-    platform: device
-    subtype: right
-    type: remote_button_short_press
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.desk_light
-    service: light.toggle
-- id: '1588407496473'
-  alias: Switch Bedroom Left
-  description: ''
-  trigger:
-  - device_id: 4f1da87fe1bb4fbeb9089c258b2ae223
-    domain: deconz
-    platform: device
-    subtype: right
-    type: remote_button_short_press
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.bed_light
-    service: light.toggle
-- id: '1588407579128'
-  alias: Switch Bedroom Right
-  description: ''
-  trigger:
-  - device_id: 4f1da87fe1bb4fbeb9089c258b2ae223
-    domain: deconz
-    platform: device
-    subtype: left
-    type: remote_button_short_press
-  condition: []
-  action:
-  - device_id: 151325c4a56e4e4e87be053f6f7e8c4d
-    domain: light
-    entity_id: light.bedroom_ceiling_light
-    type: toggle
-- id: '1588407611304'
-  alias: Switch Living Room Left
-  description: ''
-  trigger:
-  - device_id: b582d57fbaf8442ca953b48d27077bac
-    domain: deconz
-    platform: device
-    subtype: right
-    type: remote_button_short_press
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.couch_light
-    service: light.toggle
-- id: '1588407659074'
-  alias: Switch Living Room Right
-  description: ''
-  trigger:
-  - device_id: b582d57fbaf8442ca953b48d27077bac
-    domain: deconz
-    platform: device
-    subtype: left
-    type: remote_button_short_press
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.living_room_ceiling_light
-    service: light.toggle
+  mode: single
 - id: '1588458523846'
   alias: Toilet On
   description: ''
   trigger:
-  - device_id: 1fb03f723ba547219c323a4879bc338b
+  - device_id: 5f5b7434c79941b4bd0c43d63718d24c
     domain: binary_sensor
-    entity_id: binary_sensor.toilet_motion
+    entity_id: binary_sensor.toilet_motion_ias_zone
     platform: device
     type: motion
   condition: []
@@ -197,13 +121,18 @@
     domain: light
     entity_id: light.toilet_light
     type: turn_on
+  mode: single
 - id: '1588458560538'
   alias: Toilet Off
   description: ''
   trigger:
-  - device_id: 1fb03f723ba547219c323a4879bc338b
+  - device_id: 5f5b7434c79941b4bd0c43d63718d24c
     domain: binary_sensor
-    entity_id: binary_sensor.toilet_motion
+    entity_id: binary_sensor.toilet_motion_ias_zone
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
     platform: device
     type: no_motion
   condition: []
@@ -212,3 +141,4 @@
     domain: light
     entity_id: light.toilet_light
     type: turn_off
+  mode: single

@@ -46,9 +46,3 @@ mqtt:
     username: !secret mqtt_username
     password: !secret mqtt_password
 
-
-panel_iframe:
-    phoscon:
-        title: Phoscon 
-        icon: mdi:alpha-p-circle
-        url: !secret phoscon_url
