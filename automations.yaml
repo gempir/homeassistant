@@ -129,10 +129,6 @@
   - device_id: 5f5b7434c79941b4bd0c43d63718d24c
     domain: binary_sensor
     entity_id: binary_sensor.toilet_motion_ias_zone
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
     platform: device
     type: no_motion
   condition: []
