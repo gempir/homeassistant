@@ -20,6 +20,7 @@ google_assistant:
     service_account: !include google_assistant.json
     exposed_domains:
         - light
+        - script
 
 tado:
   username: !secret tado_username

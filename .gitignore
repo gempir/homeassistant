@@ -16,3 +16,5 @@ entity_registry.yaml
 configurator.py
 configurator.py.save
 google_assistant.json
+@eaDir
+blueprints
