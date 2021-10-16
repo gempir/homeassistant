@@ -23,9 +23,9 @@ google_assistant:
         - switch
     entity_config:
         light.conbee:
-            exposed: false
+            expose: false
         light.conbee2:
-            exposed: false
+            expose: false
 
 tado:
   username: !secret tado_username
