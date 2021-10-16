@@ -7,7 +7,7 @@ www
 .HA_VERSION
 .shopping_list.json
 .uuid
-home-assistant.log
+home-assistant.log*
 .cloud
 entity_registry.yaml
 .spotify-token-cache
