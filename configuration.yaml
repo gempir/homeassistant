@@ -21,6 +21,11 @@ google_assistant:
     exposed_domains:
         - light
         - switch
+    entity_config:
+        light.conbee:
+            exposed: false
+        light.conbee2:
+            exposed: false
 
 tado:
   username: !secret tado_username

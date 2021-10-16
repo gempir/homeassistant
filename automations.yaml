@@ -2,15 +2,11 @@
   alias: Entryway On
   description: ''
   trigger:
-  - device_id: b69e082bb69a4dd09024c325bc65398a
-    domain: binary_sensor
-    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
+  - type: turned_on
     platform: device
-    type: motion
+    device_id: b69e082bb69a4dd09024c325bc65398a
+    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
+    domain: binary_sensor
   condition: []
   action:
   - device_id: 337d43e9503442b991d75334f75eef59
@@ -22,15 +18,16 @@
   alias: Entryway Off
   description: ''
   trigger:
-  - device_id: b69e082bb69a4dd09024c325bc65398a
-    domain: binary_sensor
+  - type: turned_off
+    platform: device
+    device_id: b69e082bb69a4dd09024c325bc65398a
     entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
+    domain: binary_sensor
     for:
       hours: 0
       minutes: 3
       seconds: 0
-    platform: device
-    type: no_motion
+      milliseconds: 0
   condition: []
   action:
   - device_id: 337d43e9503442b991d75334f75eef59
@@ -42,11 +39,11 @@
   alias: Kitchen On
   description: ''
   trigger:
-  - device_id: 4ff6a258f1614075b7a28321835c796c
-    domain: binary_sensor
-    entity_id: binary_sensor.kitchen_motion_ias_zone
+  - type: motion
     platform: device
-    type: motion
+    device_id: 4ff6a258f1614075b7a28321835c796c
+    entity_id: binary_sensor.kitchen_motion_ias_zone
+    domain: binary_sensor
   condition: []
   action:
   - data: {}
@@ -57,15 +54,16 @@
   alias: Kitchen Off
   description: ''
   trigger:
-  - device_id: 4ff6a258f1614075b7a28321835c796c
-    domain: binary_sensor
+  - type: no_motion
+    platform: device
+    device_id: 4ff6a258f1614075b7a28321835c796c
     entity_id: binary_sensor.kitchen_motion_ias_zone
+    domain: binary_sensor
     for:
       hours: 0
       minutes: 3
       seconds: 0
-    platform: device
-    type: no_motion
+      milliseconds: 0
   condition: []
   action:
   - data: {}
@@ -76,11 +74,11 @@
   alias: Bathroom On
   description: ''
   trigger:
-  - device_id: 011d2b04ae864e34bb702c4aa6eb9669
-    domain: binary_sensor
-    entity_id: binary_sensor.bathroom_motion_ias_zone
+  - type: motion
     platform: device
-    type: motion
+    device_id: 011d2b04ae864e34bb702c4aa6eb9669
+    entity_id: binary_sensor.bathroom_motion_ias_zone
+    domain: binary_sensor
   condition: []
   action:
   - data: {}
@@ -91,15 +89,16 @@
   alias: Bathroom Off
   description: ''
   trigger:
-  - device_id: 011d2b04ae864e34bb702c4aa6eb9669
-    domain: binary_sensor
+  - type: no_motion
+    platform: device
+    device_id: 011d2b04ae864e34bb702c4aa6eb9669
     entity_id: binary_sensor.bathroom_motion_ias_zone
+    domain: binary_sensor
     for:
       hours: 0
       minutes: 3
       seconds: 0
-    platform: device
-    type: no_motion
+      milliseconds: 0
   condition: []
   action:
   - data: {}
@@ -137,4 +136,75 @@
     domain: light
     entity_id: light.toilet_light
     type: turn_off
+  mode: single
+- id: '1627583365847'
+  alias: Switch Living Room Right
+  description: ''
+  trigger:
+  - device_id: 652ba84add06341737102027b29dd283
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  condition: []
+  action:
+  - type: toggle
+    device_id: ce3f38f469e5ef46385a98b06fca940a
+    entity_id: light.living_room_ceiling_light
+    domain: light
+  mode: single
+- id: '1627583474484'
+  alias: Switch Living Room Left
+  description: ''
+  trigger:
+  - device_id: 652ba84add06341737102027b29dd283
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_2
+  condition: []
+  action:
+  - type: toggle
+    device_id: b0011ffa4c6d7fbb6d4727680a85af41
+    entity_id: light.sideboard_light
+    domain: light
+  - type: toggle
+    device_id: fe096adc4cbfb2c8d456b3ffc77f9cdf
+    entity_id: light.picture_light
+    domain: light
+  mode: single
+- id: '1627585994728'
+  alias: Switch Office Left
+  description: ''
+  trigger:
+  - device_id: b3ecde2417e5b84b7bde1c19ff1699cc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_2
+  condition: []
+  action:
+  - type: toggle
+    device_id: abeeabce89b24406af73802f8ddd37fd
+    entity_id: light.office_ceiling_light
+    domain: light
+  mode: single
+- id: '1627586101347'
+  alias: Switch Office Right
+  description: ''
+  trigger:
+  - device_id: b3ecde2417e5b84b7bde1c19ff1699cc
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  condition: []
+  action:
+  - type: toggle
+    device_id: 13b409959d2a200c69b392152fc6cd83
+    entity_id: light.desk_light
+    domain: light
+  - service: light.toggle
+    target:
+      entity_id: light.screen_light
   mode: single

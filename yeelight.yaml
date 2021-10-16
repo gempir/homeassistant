@@ -6,7 +6,9 @@ devices:
     192.168.178.39:
         name: Bed Light
     192.168.178.34:
-        name: Couch Light
+        name: Sideboard Light
+    192.168.178.44:
+        name: Picture Light
     192.168.178.32:
         name: Bathroom Ceiling Light
     192.168.178.31:
