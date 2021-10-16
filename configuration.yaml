@@ -27,12 +27,10 @@ google_assistant:
         light.conbee2:
             expose: false
 
-tado:
-  username: !secret tado_username
-  password: !secret tado_password
-
 http:
-    base_url: !secret base_url
+    use_x_forwarded_for: true
+    trusted_proxies:
+        - 172.17.0.1
 
 updater:
 
