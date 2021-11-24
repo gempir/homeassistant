@@ -2,26 +2,31 @@
   alias: Entryway On
   description: ''
   trigger:
-  - type: turned_on
+  - type: motion
     platform: device
-    device_id: b69e082bb69a4dd09024c325bc65398a
-    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
+    device_id: 7938fe1dd207ee3736faa8823ccfb65e
+    entity_id: binary_sensor.entryway_motion_occupancy
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
   condition: []
   action:
-  - device_id: 337d43e9503442b991d75334f75eef59
-    domain: light
+  - type: turn_on
+    device_id: 1b4211ece672924db465a177f41b47c0
     entity_id: light.entryway_ceiling_light
-    type: turn_on
+    domain: light
   mode: single
 - id: '1583779064247'
   alias: Entryway Off
   description: ''
   trigger:
-  - type: turned_off
+  - type: no_motion
     platform: device
-    device_id: b69e082bb69a4dd09024c325bc65398a
-    entity_id: binary_sensor.entryway_motion_aee42202_ias_zone
+    device_id: 7938fe1dd207ee3736faa8823ccfb65e
+    entity_id: binary_sensor.entryway_motion_occupancy
     domain: binary_sensor
     for:
       hours: 0
@@ -30,10 +35,10 @@
       milliseconds: 0
   condition: []
   action:
-  - device_id: 337d43e9503442b991d75334f75eef59
-    domain: light
+  - type: turn_off
+    device_id: 1b4211ece672924db465a177f41b47c0
     entity_id: light.entryway_ceiling_light
-    type: turn_off
+    domain: light
   mode: single
 - id: '1583779363886'
   alias: Kitchen On
@@ -41,8 +46,8 @@
   trigger:
   - type: motion
     platform: device
-    device_id: 4ff6a258f1614075b7a28321835c796c
-    entity_id: binary_sensor.kitchen_motion_ias_zone
+    device_id: 436e337219a560c2adab03e2b5f3adfe
+    entity_id: binary_sensor.kitchen_motion_occupancy_2
     domain: binary_sensor
   condition: []
   action:
@@ -56,8 +61,8 @@
   trigger:
   - type: no_motion
     platform: device
-    device_id: 4ff6a258f1614075b7a28321835c796c
-    entity_id: binary_sensor.kitchen_motion_ias_zone
+    device_id: 436e337219a560c2adab03e2b5f3adfe
+    entity_id: binary_sensor.kitchen_motion_occupancy_2
     domain: binary_sensor
     for:
       hours: 0
@@ -76,9 +81,14 @@
   trigger:
   - type: motion
     platform: device
-    device_id: 011d2b04ae864e34bb702c4aa6eb9669
-    entity_id: binary_sensor.bathroom_motion_ias_zone
+    device_id: a4f2383bcfbe8c591541c16c4a2c4dc8
+    entity_id: binary_sensor.bathroom_motion_occupancy
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
   condition: []
   action:
   - data: {}
@@ -91,8 +101,8 @@
   trigger:
   - type: no_motion
     platform: device
-    device_id: 011d2b04ae864e34bb702c4aa6eb9669
-    entity_id: binary_sensor.bathroom_motion_ias_zone
+    device_id: a4f2383bcfbe8c591541c16c4a2c4dc8
+    entity_id: binary_sensor.bathroom_motion_occupancy
     domain: binary_sensor
     for:
       hours: 0
@@ -109,43 +119,44 @@
   alias: Toilet On
   description: ''
   trigger:
-  - device_id: 5f5b7434c79941b4bd0c43d63718d24c
-    domain: binary_sensor
-    entity_id: binary_sensor.toilet_motion_ias_zone
+  - type: motion
     platform: device
-    type: motion
+    device_id: c436daa55f713ed43bdd0560caddbade
+    entity_id: binary_sensor.toilet_motion_occupancy
+    domain: binary_sensor
   condition: []
   action:
-  - device_id: 56a12ef92607411e89f42477605f0542
+  - type: turn_on
+    device_id: 1d8a6ec1c7a5d426c3bc0ae1d87f1a99
+    entity_id: light.toilet_ceiling_light
     domain: light
-    entity_id: light.toilet_light
-    type: turn_on
   mode: single
 - id: '1588458560538'
   alias: Toilet Off
   description: ''
   trigger:
-  - device_id: 5f5b7434c79941b4bd0c43d63718d24c
-    domain: binary_sensor
-    entity_id: binary_sensor.toilet_motion_ias_zone
+  - type: no_motion
     platform: device
-    type: no_motion
+    device_id: c436daa55f713ed43bdd0560caddbade
+    entity_id: binary_sensor.toilet_motion_occupancy
+    domain: binary_sensor
   condition: []
   action:
-  - device_id: 56a12ef92607411e89f42477605f0542
+  - type: turn_off
+    device_id: 1d8a6ec1c7a5d426c3bc0ae1d87f1a99
+    entity_id: light.toilet_ceiling_light
     domain: light
-    entity_id: light.toilet_light
-    type: turn_off
   mode: single
 - id: '1627583365847'
   alias: Switch Living Room Right
   description: ''
   trigger:
-  - device_id: 652ba84add06341737102027b29dd283
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: button_1
+  - platform: device
+    domain: mqtt
+    device_id: b3088b50b410173785d231f94848e736
+    type: click
+    subtype: left
+    discovery_id: 0x00158d0002ea052f click_left
   condition: []
   action:
   - type: toggle
@@ -157,11 +168,12 @@
   alias: Switch Living Room Left
   description: ''
   trigger:
-  - device_id: 652ba84add06341737102027b29dd283
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: button_2
+  - platform: device
+    domain: mqtt
+    device_id: b3088b50b410173785d231f94848e736
+    type: click
+    subtype: right
+    discovery_id: 0x00158d0002ea052f click_right
   condition: []
   action:
   - type: toggle
@@ -174,30 +186,32 @@
     domain: light
   mode: single
 - id: '1627585994728'
-  alias: Switch Office Left
+  alias: Switch Office Right
   description: ''
   trigger:
-  - device_id: b3ecde2417e5b84b7bde1c19ff1699cc
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: button_2
+  - platform: device
+    domain: mqtt
+    device_id: a36e4c6eb68cf39cd66c5519c0496714
+    type: click
+    subtype: left
+    discovery_id: 0x00158d0001e11856 click_left
   condition: []
   action:
   - type: toggle
-    device_id: abeeabce89b24406af73802f8ddd37fd
+    device_id: 2ec565972f0387f54e122d0d49667650
     entity_id: light.office_ceiling_light
     domain: light
   mode: single
 - id: '1627586101347'
-  alias: Switch Office Right
+  alias: Switch Office Left
   description: ''
   trigger:
-  - device_id: b3ecde2417e5b84b7bde1c19ff1699cc
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: button_1
+  - platform: device
+    domain: mqtt
+    device_id: a36e4c6eb68cf39cd66c5519c0496714
+    type: click
+    subtype: right
+    discovery_id: 0x00158d0001e11856 click_right
   condition: []
   action:
   - type: toggle
@@ -207,4 +221,38 @@
   - service: light.toggle
     target:
       entity_id: light.screen_light
+  mode: single
+- id: '1637740184044'
+  alias: Switch Bedroom Left
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a2f7bce66e32953bfbe456309b5f911c
+    type: click
+    subtype: right
+    discovery_id: 0x00158d0001f3f4cc click_right
+  condition: []
+  action:
+  - type: toggle
+    device_id: 3a54e5353f9562e7559702995f6e5a92
+    entity_id: light.bed_light
+    domain: light
+  mode: single
+- id: '1637740397600'
+  alias: Switch Bedroom Right
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a2f7bce66e32953bfbe456309b5f911c
+    type: click
+    subtype: left
+    discovery_id: 0x00158d0001f3f4cc click_left
+  condition: []
+  action:
+  - type: toggle
+    device_id: 68398e4409a2d8f6c4cea705c2994c26
+    entity_id: light.bedroom_ceiling_light
+    domain: light
   mode: single
