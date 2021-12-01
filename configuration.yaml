@@ -21,6 +21,7 @@ google_assistant:
     exposed_domains:
         - light
         - switch
+        - vacuum
     entity_config:
         light.conbee:
             expose: false

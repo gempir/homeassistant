@@ -140,6 +140,11 @@
     device_id: c436daa55f713ed43bdd0560caddbade
     entity_id: binary_sensor.toilet_motion_occupancy
     domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 30
+      milliseconds: 0
   condition: []
   action:
   - type: turn_off
@@ -160,7 +165,7 @@
   condition: []
   action:
   - type: toggle
-    device_id: ce3f38f469e5ef46385a98b06fca940a
+    device_id: 29479a81ec41d0ce25c1ba0f97b30e20
     entity_id: light.living_room_ceiling_light
     domain: light
   mode: single
@@ -255,4 +260,24 @@
     device_id: 68398e4409a2d8f6c4cea705c2994c26
     entity_id: light.bedroom_ceiling_light
     domain: light
+  mode: single
+- id: '1638301817248'
+  alias: Vacuum Daily
+  description: ''
+  trigger:
+  - platform: time
+    at: '10:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - device_id: 8c940ec4e1d315d6b30ae6c2ddcb8ab4
+    domain: vacuum
+    entity_id: vacuum.z10_pro
+    type: clean
   mode: single
