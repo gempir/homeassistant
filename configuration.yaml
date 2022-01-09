@@ -29,9 +29,17 @@ google_assistant:
             expose: false
 
 http:
+    cors_allowed_origins:
+        - https://google.com
+        - https://www.home-assistant.io
     use_x_forwarded_for: true
     trusted_proxies:
+        - 10.0.0.200
         - 172.17.0.1
+        - 192.168.178.40
+        - 172.30.33.0/24
+    ip_ban_enabled: true
+    login_attempts_threshold: 10
 
 updater:
 
