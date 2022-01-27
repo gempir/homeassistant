@@ -53,6 +53,7 @@ sensor: !include sensor.yaml
 light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
+influxdb: !include influxdb.yaml
 
 mqtt:
     broker: !secret mqtt_host

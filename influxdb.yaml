@@ -1,0 +1,7 @@
+api_version: 2
+ssl: false
+host: 192.168.178.40
+port: 8086
+bucket: home_assistant
+organization: home
+token: !secret influxdb_token
