@@ -1,6 +1,4 @@
 devices:
-    192.168.178.33:
-        name: Living Room Ceiling Light
     192.168.178.38:
         name: Desk Light
     192.168.178.39:
