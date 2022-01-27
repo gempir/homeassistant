@@ -54,6 +54,7 @@ light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 influxdb: !include influxdb.yaml
+prometheus:
 
 mqtt:
     broker: !secret mqtt_host
