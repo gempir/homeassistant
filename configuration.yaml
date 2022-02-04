@@ -20,7 +20,7 @@ google_assistant:
     service_account: !include google_assistant.json
     exposed_domains:
         - light
-        - switch
+        - script
         - vacuum
     entity_config:
         light.conbee:
