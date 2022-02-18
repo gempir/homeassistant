@@ -281,3 +281,28 @@
     entity_id: vacuum.z10_pro
     type: clean
   mode: single
+- id: '1645170931825'
+  alias: Wash Notification
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.wash_plug_power
+    above: '3'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+  condition: []
+  action:
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id: sensor.wash_plug_power
+      below: '2'
+      for:
+        hours: 0
+        minutes: 5
+        seconds: 0
+  - service: notify.notify
+    data:
+      message: Washing machine done
+  mode: single
