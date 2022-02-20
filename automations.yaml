@@ -182,16 +182,20 @@
   condition: []
   action:
   - type: toggle
-    device_id: b0011ffa4c6d7fbb6d4727680a85af41
-    entity_id: light.sideboard_light
+    device_id: 13b409959d2a200c69b392152fc6cd83
+    entity_id: light.desk_light
     domain: light
   - type: toggle
     device_id: fe096adc4cbfb2c8d456b3ffc77f9cdf
     entity_id: light.picture_light
     domain: light
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.screen_light
   mode: single
 - id: '1627585994728'
-  alias: Switch Office Right
+  alias: Switch Bedroom Right
   description: ''
   trigger:
   - platform: device
@@ -203,32 +207,12 @@
   condition: []
   action:
   - type: toggle
-    device_id: 2ec565972f0387f54e122d0d49667650
-    entity_id: light.office_ceiling_light
+    device_id: d0af96ad0a6e1204b4832c301cdbda50
+    entity_id: light.bedroom_ceiling_light
     domain: light
   mode: single
 - id: '1627586101347'
-  alias: Switch Office Left
-  description: ''
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: a36e4c6eb68cf39cd66c5519c0496714
-    type: click
-    subtype: right
-    discovery_id: 0x00158d0001e11856 click_right
-  condition: []
-  action:
-  - type: toggle
-    device_id: 13b409959d2a200c69b392152fc6cd83
-    entity_id: light.desk_light
-    domain: light
-  - service: light.toggle
-    target:
-      entity_id: light.screen_light
-  mode: single
-- id: '1637740184044'
-  alias: Switch Bedroom Left
+  alias: Switch Gym Left
   description: ''
   trigger:
   - platform: device
@@ -240,12 +224,29 @@
   condition: []
   action:
   - type: toggle
-    device_id: 3a54e5353f9562e7559702995f6e5a92
-    entity_id: light.bed_light
+    device_id: 28661410a9549f4bb9a39af48b9ffac9
+    entity_id: light.gym_ceiling_light
+    domain: light
+  mode: single
+- id: '1637740184044'
+  alias: Switch Bedroom Left
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a36e4c6eb68cf39cd66c5519c0496714
+    type: click
+    subtype: right
+    discovery_id: 0x00158d0001e11856 click_right
+  condition: []
+  action:
+  - type: toggle
+    device_id: d0af96ad0a6e1204b4832c301cdbda50
+    entity_id: light.bedroom_ceiling_light
     domain: light
   mode: single
 - id: '1637740397600'
-  alias: Switch Bedroom Right
+  alias: Switch Gym Right
   description: ''
   trigger:
   - platform: device
@@ -257,8 +258,8 @@
   condition: []
   action:
   - type: toggle
-    device_id: 68398e4409a2d8f6c4cea705c2994c26
-    entity_id: light.bedroom_ceiling_light
+    device_id: 28661410a9549f4bb9a39af48b9ffac9
+    entity_id: light.gym_ceiling_light
     domain: light
   mode: single
 - id: '1638301817248'
