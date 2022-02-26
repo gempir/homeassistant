@@ -24,6 +24,10 @@ google_assistant:
         - switch
         - vacuum
     entity_config:
+        switch.network_plug:
+            expose: false
+        switch.sideboard_plug:
+            expose: false
         light.conbee:
             expose: false
         light.conbee2:
