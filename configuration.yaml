@@ -42,10 +42,6 @@ http:
     ip_ban_enabled: true
     login_attempts_threshold: 10
 
-updater:
-
-lovelace:
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -55,9 +51,4 @@ light: !include light.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 prometheus:
-
-mqtt:
-    broker: !secret mqtt_host
-    username: !secret mqtt_username
-    password: !secret mqtt_password
 
