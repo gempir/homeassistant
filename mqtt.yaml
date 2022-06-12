@@ -1,0 +1,9 @@
+light:
+  - name: Falcon Light
+    state_topic: "home/falcon"
+    command_topic: "home/falcon/set"
+    schema: json
+  - name: Screen Light
+    state_topic: "home/screenlight"
+    command_topic: "home/screenlight/set"
+    schema: json

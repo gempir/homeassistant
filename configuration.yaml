@@ -10,27 +10,9 @@ homeassistant:
 frontend:
     themes: !include themes.yaml
 
-# Enables configuration UI
 config:
 system_health:
 mobile_app:
-
-google_assistant:
-    project_id: ga_project_id
-    service_account: !include google_assistant.json
-    exposed_domains:
-        - light
-        - script
-        - switch
-        - vacuum
-    entity_config:
-        switch.sideboard_plug:
-            expose: false
-        light.conbee:
-            expose: false
-        light.conbee2:
-            expose: false
-
 http:
     cors_allowed_origins:
         - https://google.com
@@ -42,12 +24,15 @@ http:
     ip_ban_enabled: true
     login_attempts_threshold: 10
 
+google_assistant: !include google_assistantg.yaml
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 binary_sensor: !include binary_sensor.yaml
 sensor: !include sensor.yaml
-light: !include light.yaml
+mqtt: !include mqtt.yaml
 yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 prometheus:

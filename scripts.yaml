@@ -1,14 +1,103 @@
-tv:
+learn_tv_power:
   sequence:
-    - service: remote.send_command
-      target:
-        entity_id: remote.broadlink_remote
-      data:
-        command: 'b64:JgAYAZOVETkSORE6ERQSFBEVERQRFRE6ETkROhEVERQRFREUEhQRFRE5EToRFREUEToROhE5EToRFREUEToROhEUERURFREABe2UlBM4EzcUNxMTExIUEhMTExIUNxM3FDcUEhMSFBITExMSFBITNxQ3FBITExM3FDcTOBM3FBITExM3FDcTExMSFBITAAXrlJQUNxM4EzcUEhMTExIUEhMSFDcUNxM3FBIUEhMSFBITExMSFDcTNxQSFBITNxQ3FDcTNxQSFBITNxQ3FBITEhQSEwAF65WTFDcUNxM3FBIUEhMSFBITExM3FDcTOBMSFBITExMSFBITEhQ3FDcTEhQSEzgTNxQ3FDcTEhQSEzgTNxQSExMTEhQADQU='
-soundbar:
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: tv
+      command: power
+learn_soundbar_power:
   sequence:
-    - service: remote.send_command
-      target:
-        entity_id: remote.broadlink_remote
-      data:
-        command: 'b64:JgBYAAABKJMTEhMSExITNxM2FDYTNxMSEzcTNxM2FBEUEhMSExITNhQSExITNhQ2ExITEhM3EzcTNxM2FBITEhM2EzcTEhMSEwAFCgABKEoTAAxBAAEoShMADQU='
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: soundbar
+      command: power
+learn_dyson_power:
+  sequence:
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: power
+learn_dyson_oscillate:
+  sequence:
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: oscillate
+learn_dyson_speed_up:
+  sequence:
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: speed_up
+learn_dyson_speed_down:
+  sequence:
+  - service: remote.learn_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: speed_down
+
+tv_power:
+  alias: TV Power
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: tv
+      command: power
+soundbar_power:
+  alias: Soundbar Power
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: soundbar
+      command: power
+dyson_power:
+  alias: Dyson Power
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: power
+dyson_oscillate:
+  alias: Dyson Oscillate
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: oscillate
+dyson_speed_up:
+  alias: Dyson Speed Up
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: speed_up
+dyson_speed_down:
+  alias: Dyson Speed Down
+  sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.broadlink_remote
+    data:
+      device: dyson
+      command: speed_down

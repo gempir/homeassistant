@@ -1,0 +1,22 @@
+project_id: ga_project_id
+service_account: !include google_assistant.json
+exposed_domains:
+    - light
+    - script
+    - switch
+    - vacuum
+entity_config:
+    script.learn_dyson_power:
+        expose: false
+    script.learn_dyson_oscillate:
+        expose: false
+    script.learn_dyson_speed_up:
+        expose: false
+    script.learn_dyson_speed_down:
+        expose: false
+    switch.sideboard_plug:
+        expose: false
+    light.conbee:
+        expose: false
+    light.conbee2:
+        expose: false
