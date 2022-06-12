@@ -2,20 +2,22 @@ project_id: ga_project_id
 service_account: !include google_assistant.json
 exposed_domains:
     - light
-    - script
-    - switch
     - vacuum
 entity_config:
-    script.learn_dyson_power:
-        expose: false
-    script.learn_dyson_oscillate:
-        expose: false
-    script.learn_dyson_speed_up:
-        expose: false
-    script.learn_dyson_speed_down:
-        expose: false
-    switch.sideboard_plug:
-        expose: false
+    script.dyson_power:
+        name: Dyson Power
+        expose: true
+    script.dyson_oscillate:
+        name: Dyson Oscillate
+        expose: true
+    script.dyson_speed_up:
+        name: Dyson Speed Up
+        expose: true
+    script.dyson_speed_down:
+        name: Dyson Speed Down
+        expose: true
+    script.sideboard_plug:
+        expose: true
     light.conbee:
         expose: false
     light.conbee2:

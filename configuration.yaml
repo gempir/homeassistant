@@ -24,7 +24,7 @@ http:
     ip_ban_enabled: true
     login_attempts_threshold: 10
 
-google_assistant: !include google_assistantg.yaml
+google_assistant: !include google_assistant.yaml
 
 
 group: !include groups.yaml
