@@ -2,6 +2,7 @@ project_id: ga_project_id
 service_account: !include google_assistant.json
 exposed_domains:
     - light
+    - switch
     - vacuum
 entity_config:
     script.dyson_power:

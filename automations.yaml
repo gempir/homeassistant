@@ -307,3 +307,72 @@
     data:
       message: Washing machine done
   mode: single
+- id: '1659884344918'
+  alias: iOS Lights Off
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Lights Off
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.all_lights
+  mode: single
+- id: '1659885384087'
+  alias: iOS Start Vacuum
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Start Vacuum
+  condition: []
+  action:
+  - device_id: 8c940ec4e1d315d6b30ae6c2ddcb8ab4
+    domain: vacuum
+    entity_id: vacuum.z10_pro
+    type: clean
+  mode: single
+- id: '1659885423014'
+  alias: iOS Stop Vacuum
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Stop Vacuum
+  condition: []
+  action:
+  - device_id: 8c940ec4e1d315d6b30ae6c2ddcb8ab4
+    domain: vacuum
+    entity_id: vacuum.z10_pro
+    type: dock
+  mode: single
+- id: '1659885712349'
+  alias: iOS Lights On
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Lights On
+  condition: []
+  action:
+  - service: light.turn_on
+    entity_id: light.all_lights
+  mode: single
+- id: '1659982431198'
+  alias: Turn Off Alarm Light
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:30:00
+  condition: []
+  action:
+  - type: turn_off
+    device_id: d0af96ad0a6e1204b4832c301cdbda50
+    entity_id: light.bedroom_ceiling_light
+    domain: light
+  mode: single
