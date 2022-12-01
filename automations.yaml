@@ -47,7 +47,7 @@
   - type: motion
     platform: device
     device_id: 436e337219a560c2adab03e2b5f3adfe
-    entity_id: binary_sensor.kitchen_motion_occupancy_2
+    entity_id: binary_sensor.kitchen_motion_occupancy
     domain: binary_sensor
   condition: []
   action:
@@ -62,13 +62,12 @@
   - type: no_motion
     platform: device
     device_id: 436e337219a560c2adab03e2b5f3adfe
-    entity_id: binary_sensor.kitchen_motion_occupancy_2
+    entity_id: binary_sensor.kitchen_motion_occupancy
     domain: binary_sensor
     for:
       hours: 0
-      minutes: 3
+      minutes: 5
       seconds: 0
-      milliseconds: 0
   condition: []
   action:
   - data: {}
@@ -91,9 +90,10 @@
       milliseconds: 0
   condition: []
   action:
-  - data: {}
-    entity_id: light.bathroom_ceiling_light
-    service: homeassistant.turn_on
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.bathroom_mirror_light
   mode: single
 - id: '1583779578603'
   alias: Bathroom Off
@@ -108,12 +108,12 @@
       hours: 0
       minutes: 3
       seconds: 0
-      milliseconds: 0
   condition: []
   action:
-  - data: {}
-    entity_id: light.bathroom_ceiling_light
-    service: light.turn_off
+  - service: switch.turn_off
+    data: {}
+    target:
+      device_id: fe5f7df412ba5386cba5d75d536a5ea7
   mode: single
 - id: '1588458523846'
   alias: Toilet On
@@ -276,6 +276,7 @@
     - wed
     - thu
     - fri
+    before: 00:00:00
   action:
   - device_id: 8c940ec4e1d315d6b30ae6c2ddcb8ab4
     domain: vacuum

@@ -1,9 +1,0 @@
-devices:
-    192.168.178.38:
-        name: Desk Light
-    192.168.178.44:
-        name: Picture Light
-    192.168.178.32:
-        name: Bathroom Ceiling Light
-    192.168.178.31:
-        name: Kitchen Ceiling Light

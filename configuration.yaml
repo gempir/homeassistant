@@ -20,7 +20,7 @@ http:
     use_x_forwarded_for: true
     trusted_proxies:
         - 172.19.0.1
-        - 192.168.178.40
+        - 192.168.1.40
     ip_ban_enabled: true
     login_attempts_threshold: 10
 
@@ -33,7 +33,6 @@ script: !include scripts.yaml
 binary_sensor: !include binary_sensor.yaml
 sensor: !include sensor.yaml
 mqtt: !include mqtt.yaml
-yeelight: !include yeelight.yaml
 switch: !include switch.yaml
 prometheus:
 
