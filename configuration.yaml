@@ -27,12 +27,6 @@ http:
 google_assistant: !include google_assistant.yaml
 
 
-group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-binary_sensor: !include binary_sensor.yaml
-sensor: !include sensor.yaml
-mqtt: !include mqtt.yaml
-switch: !include switch.yaml
 prometheus:
-
