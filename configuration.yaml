@@ -1,5 +1,6 @@
 homeassistant:
     name: Home
+    country: DE
     latitude: !secret home_lat
     longitude: !secret home_long
     elevation: !secret home_elev
