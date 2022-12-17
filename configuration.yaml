@@ -22,6 +22,7 @@ http:
     trusted_proxies:
         - 172.19.0.1
         - 192.168.1.40
+        - 192.168.178.40
     ip_ban_enabled: true
     login_attempts_threshold: 10
 
