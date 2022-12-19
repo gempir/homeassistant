@@ -17,7 +17,8 @@ entity_config:
     script.dyson_speed_down:
         name: Dyson Speed Down
         expose: true
-    script.sideboard_plug:
+    script.tv_power:
+        name: Tv Power Toggle
         expose: true
     light.conbee:
         expose: false

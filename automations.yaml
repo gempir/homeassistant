@@ -377,3 +377,37 @@
     entity_id: light.bedroom_ceiling_light
     domain: light
   mode: single
+- id: '1671466229446'
+  alias: Switch Storage Left
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b243065e805c40c0983fa92cf70e362b
+    type: click
+    subtype: right
+    discovery_id: 0x00158d0002f08889 click_right
+  condition: []
+  action:
+  - type: toggle
+    device_id: 0996ec5c22094a3c1debbe14ec5fadb1
+    entity_id: light.storage_ceiling_light
+    domain: light
+  mode: single
+- id: '1671466594754'
+  alias: Switch Storage Right
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b243065e805c40c0983fa92cf70e362b
+    type: click
+    subtype: left
+    discovery_id: 0x00158d0002f08889 click_left
+  condition: []
+  action:
+  - type: toggle
+    device_id: 0996ec5c22094a3c1debbe14ec5fadb1
+    entity_id: light.storage_ceiling_light
+    domain: light
+  mode: single
